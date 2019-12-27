@@ -62,63 +62,73 @@ class _TopHeadlinesViewState extends State<TopHeadlinesView>
               _article.articles == null ? 10 : _article.articles.length ?? 0;
 
           return Container(
-            margin: EdgeInsets.symmetric(horizontal: 4.0),
+              margin: EdgeInsets.symmetric(horizontal: 4.0),
               child: Material(
-            child: InkWell(
-              splashColor: ExploreAppTheme.exploreYellow,
-              child: SizedBox(
-                width: 153, // <------------------  card widgth
-                child: showAllUI(index),
-              ),
-            ),
-          ));
+                child: InkWell(
+                  splashColor: ExploreAppTheme.exploreYellow,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ViewArticleScreen(
+                                index: index,
+                                articleObj: _article,
+                              )),
+                    );
+                  },
+                  child: SizedBox(
+                    width: 153, // <------------------  card widgth
+                    child: showAllUI(index),
+                  ),
+                ),
+              ));
         },
       );
 
-  Widget gradientShadow() => Container(
-        height: 250.0,
-        decoration: BoxDecoration(
-            color: ExploreAppTheme.background,
-            borderRadius: BorderRadius.all(Radius.circular(0.0)),
-            gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-                colors: [ExploreAppTheme.background, Colors.transparent])),
+  Widget gradientShadow(int index) => GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ViewArticleScreen(
+                      index: index,
+                      articleObj: _article,
+                    )),
+          );
+        },
+        child: Container(
+          height: 250.0,
+          decoration: BoxDecoration(
+              color: ExploreAppTheme.background,
+              borderRadius: BorderRadius.all(Radius.circular(0.0)),
+              gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [ExploreAppTheme.background, Colors.transparent])),
+        ),
       );
 
   Widget showAllUI(int index) => Stack(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 0.0),
-            child: InkWell(
-              hoverColor: ExploreAppTheme.exploreYellow,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ViewArticleScreen()),
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: ExploreAppTheme.background,
-                    borderRadius: BorderRadius.all(Radius.circular(0.0)),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                          color: ExploreAppTheme.background.withOpacity(0.2),
-                          offset: Offset(1.1, 4.0),
-                          blurRadius: 8.0),
-                    ],
-                    image: DecorationImage(
-                      image: new NetworkImage(
-                          _article.articles[index].urlToImage == null
-                              ? ""
-                              : _article.articles[index].urlToImage),
-                      fit: BoxFit.cover,
-                    )),
-              ),
-            ),
+            decoration: BoxDecoration(
+                color: ExploreAppTheme.background,
+                borderRadius: BorderRadius.all(Radius.circular(0.0)),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                      color: ExploreAppTheme.background.withOpacity(0.2),
+                      offset: Offset(1.1, 4.0),
+                      blurRadius: 8.0),
+                ],
+                image: DecorationImage(
+                  image: new NetworkImage(
+                      _article.articles[index].urlToImage == null
+                          ? ""
+                          : _article.articles[index].urlToImage),
+                  fit: BoxFit.cover,
+                )),
           ),
-          gradientShadow(),
+          gradientShadow(index),
           Container(
             child: Padding(
               padding: const EdgeInsets.only(
@@ -208,6 +218,41 @@ class _TopHeadlinesViewState extends State<TopHeadlinesView>
               ),
             ),
           ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                child: SizedBox(
+                  height: 3.0,
+                  child: Container(
+                    decoration:
+                        BoxDecoration(color: ExploreAppTheme.exploreYellow),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 35.0,
+                width: 35.0,
+                child: Container(
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 10.0),
+                    child: Center(
+                        child: Text(
+                      "...",
+                      style: TextStyle(
+                        fontFamily: Constants.OPEN_SANS,    
+                        fontWeight: FontWeight.w400,
+                        fontSize: 19.0,
+                        color: Colors.white,
+                        letterSpacing: 0.7,
+                      ),
+                    )),
+                  ),
+                  decoration: BoxDecoration(color: ExploreAppTheme.background),
+                ),
+              ),
+            ],
+          )
         ],
       );
 

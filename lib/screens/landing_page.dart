@@ -2,6 +2,7 @@ import 'package:explore_app/constants/constants.dart';
 import 'package:explore_app/styles/explore_app_theme.dart';
 import 'package:explore_app/ui_views/landing_page_actionbar_view.dart';
 import 'package:explore_app/ui_views/top_headlines_view.dart';
+import 'package:explore_app/widgets/gradient_shadow.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,35 +19,29 @@ class _LandingPageState extends State<LandingPage> {
       child: Scaffold(
         backgroundColor: ExploreAppTheme.background,
         body: Stack(
-          children: <Widget>[backgroundImage(),gradientHomeShadow(),landingPageBody()],
+          children: <Widget>[
+            backgroundImage(),
+            GradientShadow(),
+            landingPageBody()
+          ],
         ),
       ),
     );
   }
 
-  Widget gradientHomeShadow() => Container(
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-            color: ExploreAppTheme.background,
-            borderRadius: BorderRadius.all(Radius.circular(0.0)),
-            gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topRight,
-                colors: [Colors.black, ExploreAppTheme.nearlyTransparent])),
-      );
-
-      Widget backgroundImage() => Padding(
-        padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.4, left: MediaQuery.of(context).size.width * 0.0),
+  Widget backgroundImage() => Padding(
+        padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height * 0.4,
+            left: MediaQuery.of(context).size.width * 0.0),
         child: Container(
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-                      image: new AssetImage("assets/images/bg_photo.png"),
-                      fit: BoxFit.cover,
-                    )
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+            image: new AssetImage("assets/images/bg_photo.png"),
+            fit: BoxFit.cover,
+          )),
         ),
-      ),
-      ) ;
+      );
 
   Widget landingPageBody() => ListView(
         children: <Widget>[
@@ -57,7 +52,7 @@ class _LandingPageState extends State<LandingPage> {
       );
 
   Widget exploreHomeTitle() => Padding(
-      padding: EdgeInsets.only(left: 25.0, top: 50.0),
+      padding: EdgeInsets.only(left: 25.0, top: 60.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -66,6 +61,7 @@ class _LandingPageState extends State<LandingPage> {
             style: TextStyle(
               fontFamily: Constants.POPPINS,
               fontWeight: FontWeight.w600,
+              height: 0.8,
               fontSize: 30.0,
               color: Colors.white,
               letterSpacing: 0.5,
