@@ -1,16 +1,5 @@
-# explore_app
+# Explore today app
 
-A new Flutter project.
+Beautiful mobile app build for both Android and IOS which gets data from newsapi.org. This app lets your explore top headlines news as it comes.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![70388950-9f1f9c00-196d-11ea-947c-c65bf43a4b74 (1)](https://user-images.githubusercontent.com/48721096/71503045-9e02d000-2884-11ea-8c54-ec46c544e481.jpg)
