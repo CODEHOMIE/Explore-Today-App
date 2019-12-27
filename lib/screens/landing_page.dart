@@ -3,6 +3,7 @@ import 'package:explore_app/styles/explore_app_theme.dart';
 import 'package:explore_app/ui_views/landing_page_actionbar_view.dart';
 import 'package:explore_app/ui_views/top_headlines_view.dart';
 import 'package:explore_app/widgets/gradient_shadow.dart';
+import 'package:explore_app/widgets/slide_dots.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,8 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  int _currentPage = 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,6 +26,7 @@ class _LandingPageState extends State<LandingPage> {
             backgroundImage(),
             GradientShadow(),
             landingPageBody()
+            
           ],
         ),
       ),
@@ -47,9 +51,27 @@ class _LandingPageState extends State<LandingPage> {
         children: <Widget>[
           LandingPageActionBarView(),
           exploreHomeTitle(),
-          TopHeadlinesView()
+          TopHeadlinesView(),
+          sliderIndicators()
         ],
       );
+
+      Widget sliderIndicators() => Container(              
+                  margin: EdgeInsets.only(
+                      bottom: 20.0,
+                      top: 50.0,
+                      left: 20.0),
+                  child:Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            for (int i = 0; i < 4; i++)
+                              if (i == _currentPage)
+                                SlideDots(true)
+                              else
+                                SlideDots(false)
+                          ],
+                        ),
+                );
 
   Widget exploreHomeTitle() => Padding(
       padding: EdgeInsets.only(left: 25.0, top: 60.0),
