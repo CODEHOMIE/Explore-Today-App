@@ -33,7 +33,7 @@ class _ReadMoreScreenState extends State<ReadMoreScreen> {
 
   BannerAd createBannerAd() {
     return BannerAd(
-        adUnitId: BannerAd.testAdUnitId,
+        adUnitId: Constants.ADUNIT_ID,
         size: AdSize.banner,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
@@ -43,7 +43,7 @@ class _ReadMoreScreenState extends State<ReadMoreScreen> {
 
   InterstitialAd createInterstitialAd() {
     return InterstitialAd(
-        adUnitId: InterstitialAd.testAdUnitId,
+        adUnitId: Constants.INTERSTITIAL_ADUNIT_ID,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
           print("InterstitialAd $event");
@@ -52,7 +52,7 @@ class _ReadMoreScreenState extends State<ReadMoreScreen> {
 
   @override
   void initState() {
-    FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
+    FirebaseAdMob.instance.initialize(appId: Constants.ADMOB_ID);
     _bannerAd = createBannerAd()..load()..show();
     _interstitialAd = createInterstitialAd()..load()..show();
     super.initState();

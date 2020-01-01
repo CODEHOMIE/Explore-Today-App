@@ -188,7 +188,7 @@ class _TopHeadlinesViewState extends State<TopHeadlinesView>
                   SizedBox(
                     height: 13.0,
                   ),
-                  Text(_article.articles[index].description,
+                  Text(_article.articles[index].description == null ? _article.articles[index].title : _article.articles[index].description,
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                       softWrap: true,
