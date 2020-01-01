@@ -2,6 +2,7 @@ import 'package:explore_app/constants/constants.dart';
 import 'package:explore_app/styles/explore_app_theme.dart';
 import 'package:explore_app/ui_views/landing_page_actionbar_view.dart';
 import 'package:explore_app/widgets/circle_image.dart';
+import 'package:explore_app/widgets/description_text.dart';
 import 'package:explore_app/widgets/gradient_shadow.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,6 @@ class ViewArticleScreen extends StatefulWidget {
 class _ViewArticleScreen extends State<ViewArticleScreen> {
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       backgroundColor: ExploreAppTheme.background,
       body: ListView(
@@ -92,7 +92,7 @@ class _ViewArticleScreen extends State<ViewArticleScreen> {
                 height: 13.0,
               ),
               Text(widget.articleObj.articles[widget.index].title,
-                  maxLines: 4,
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   softWrap: true,
                   textAlign: TextAlign.start,
@@ -135,15 +135,9 @@ class _ViewArticleScreen extends State<ViewArticleScreen> {
             SizedBox(
               height: 15.0,
             ),
-            Text(
-              "${widget.articleObj.articles[widget.index].description}\n\n${widget.articleObj.articles[widget.index].content}",
-              style: TextStyle(
-                fontFamily: Constants.OPEN_SANS,
-                fontWeight: FontWeight.w500,
-                fontSize: 12.5,
-                color: ExploreAppTheme.nearlyWhite,
-                letterSpacing: 0.8,
-              ),
+            DescriptionTextWidget(
+              text: "${widget.articleObj.articles[widget.index].description}\n\n${widget.articleObj.articles[widget.index].content}",
+              
             )
           ],
         ),
@@ -180,23 +174,54 @@ class _ViewArticleScreen extends State<ViewArticleScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                CirlcleImage(
-                  imageSize: 25.0,
-                  imageUrl: widget.articleObj.articles[widget.index].urlToImage,
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text(
-                  widget.articleObj.articles[widget.index].source.name,
-                  style: TextStyle(
-                    fontFamily: Constants.OPEN_SANS,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12.5,
-                    color: ExploreAppTheme.nearlyWhite,
-                    letterSpacing: 0.7,
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      CirlcleImage(
+                        imageSize: 25.0,
+                        imageUrl:
+                            widget.articleObj.articles[widget.index].urlToImage,
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Text(
+                        widget.articleObj.articles[widget.index].source.name,
+                        style: TextStyle(
+                          fontFamily: Constants.OPEN_SANS,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12.5,
+                          color: ExploreAppTheme.nearlyWhite,
+                          letterSpacing: 0.7,
+                        ),
+                      ),
+                    ],
                   ),
-                )
+                ),
+                Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10.0),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60.0),
+                        border: Border.all(color: ExploreAppTheme.nearlyWhite, width: 1.0)),
+                    child: Center(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.only(bottom: 12.0, left: 9, right: 9),
+                        child: Text(
+                          "...",
+                          style: TextStyle(
+                            fontFamily: Constants.OPEN_SANS,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20.0,
+                            color: ExploreAppTheme.white,
+                            letterSpacing: 0.8,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
               ],
             ),
           ),

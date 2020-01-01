@@ -85,7 +85,7 @@ class _TopHeadlinesViewState extends State<TopHeadlinesView>
         },
       );
 
-  Widget gradientShadow(int index) => GestureDetector(
+  Widget gradientShadow(int index) => GestureDetector(      
         onTap: () {
           Navigator.push(
             context,

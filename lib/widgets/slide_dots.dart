@@ -11,7 +11,7 @@ class SlideDots extends StatelessWidget {
   
     return AnimatedContainer(
       duration: Duration(milliseconds: 150),
-      margin: const EdgeInsets.symmetric(horizontal: 3.5),
+      margin: const EdgeInsets.symmetric(horizontal: 3.2),
       height: isActive ? 5 : 5,
       width: isActive ? 17 : 5,
       decoration: BoxDecoration(
@@ -20,4 +20,4 @@ class SlideDots extends StatelessWidget {
       ),
     );
   }
-}
+}      

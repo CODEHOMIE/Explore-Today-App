@@ -13,7 +13,7 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  int _currentPage = 0;
+  int _currentPage = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class _LandingPageState extends State<LandingPage> {
 
   Widget backgroundImage() => Padding(
         padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.height * 0.4,
+            bottom: MediaQuery.of(context).size.height * 0.4,   
             left: MediaQuery.of(context).size.width * 0.0),
         child: Container(
           height: MediaQuery.of(context).size.height,
