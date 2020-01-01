@@ -137,6 +137,7 @@ class _ViewArticleScreen extends State<ViewArticleScreen> {
             ),
             DescriptionTextWidget(
               text: "${widget.articleObj.articles[widget.index].description}\n\n${widget.articleObj.articles[widget.index].content}",
+              url: widget.articleObj.articles[widget.index].url,
               
             )
           ],

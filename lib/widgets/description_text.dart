@@ -1,12 +1,13 @@
 import 'package:explore_app/constants/constants.dart';
 import 'package:explore_app/styles/explore_app_theme.dart';
+import 'package:explore_app/webview/read_more.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionTextWidget extends StatefulWidget{
-  final String text;
+  final String text, url;
 
-  DescriptionTextWidget({@required this.text});
+  DescriptionTextWidget({@required this.text,@required this.url});
   @override
   State<StatefulWidget> createState() => _DescriptionTextWidgetState();
 
@@ -51,8 +52,14 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
               ],
             ),
             onTap: () {
-              setState(() {
-              });
+              Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ReadMoreScreen(
+                                articleUrl: widget.url,
+                              
+                              )),
+                    );
             },
           ),
           SizedBox(height: 20.0,)

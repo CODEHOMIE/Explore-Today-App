@@ -52,7 +52,8 @@ class _LandingPageState extends State<LandingPage> {
           LandingPageActionBarView(),
           exploreHomeTitle(),
           TopHeadlinesView(),
-          sliderIndicators()
+          sliderIndicators(),
+          SizedBox(height: 5.0,)
         ],
       );
 
